@@ -1,41 +1,37 @@
-/*Задача 3. Перевірка спаму
-Виконуй це завдання у файлі task-3.js
-Функція checkForSpam очікує один параметр message — рядок повідомлення. Слова в рядку можуть бути в довільному регістрі, наприклад SPAM або sAlE.
-Доповни функцію так:
-Якщо в message знайдено заборонене слово spam або sale, функція повертає логічне значення true.
-Якщо заборонених слів немає, функція повертає логічне значення false.
-Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
-console.log(checkForSpam("Latest technology news")); // false
-console.log(checkForSpam("JavaScript weekly newsletter")); // false
-console.log(checkForSpam("Get best sale offers now!")); // true
-console.log(checkForSpam("Amazing SalE, only tonight!")); // true
-console.log(checkForSpam("Trust me, this is not a spam message")); // true
-console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true
-console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
-Залиш цей код для перевірки ментором.
-Вимоги
-Оголошено функцію checkForSpam(message).
-Виклик checkForSpam("Latest technology news") повертає false.
-Виклик checkForSpam("JavaScript weekly newsletter") повертає false.
-Виклик checkForSpam("Get best sale offers now!") повертає true.
-Виклик checkForSpam("Amazing SalE, only tonight!") повертає true.
-Виклик checkForSpam("Trust me, this is not a spam message") повертає true.
-Виклик checkForSpam("Get rid of sPaM emails. Our book in on sale!") повертає true.
-Виклик checkForSpam("[SPAM] How to earn fast money?") повертає true.
-Виклик з будь-якими валідними аргументами повертає правильне значення.
-Результати всіх викликів виведено в консоль.
+/*
+Задача 3. Фільтрація масиву чисел
+У task-3.js оголоси функцію filterArray(numbers, value). Вона має повернути новий масив лише з тими числами, які більші за value.
+Створи всередині функції порожній масив для результату.
+Перебери всі елементи numbers циклом for або for...of.
+Для кожного числа перевір умову: воно має бути строго більшим за value.
+Якщо умова виконується, додай число до нового масиву методом push().
+Після завершення циклу поверни новий масив.
+Додай п’ять викликів console.log з ТЗ і залиш їх для ментора.
+Числа, які дорівнюють value, не потрапляють до результату.
+Перевір роботу у консолі
+Відкрий index.html у браузері, запусти DevTools і перейди на вкладку Console.
+Звір всі результати з коментарями біля викликів console.log.
+Переконайся, що slugify працює з різним регістром літер.
+Перевір makeArray, коли maxLength менше, дорівнює та перевищує довжину об’єднаного масиву.
+Перевір, що filterArray повертає порожній масив, якщо жодне число не більше за value.
+Виклич кожну функцію з іншими валідними аргументами.
+Переконайся, що в консолі немає помилок і попереджень.
+Не здавай роботу, поки в консолі є помилки або попередження.
 */
 'use strict';
 
-function checkForSpam(message) {
-    const MessageLowerCase = message.toLowerCase();
-    return MessageLowerCase.includes("spam") || MessageLowerCase.includes("sale");
+function filterArray(numbers, value) {
+    const evenNumbers = [];
+    for( const number of numbers) {
+        if( number > value) {
+            evenNumbers.push(number)
+        }
+    }
+    return evenNumbers
 }
 
-console.log(checkForSpam("Latest technology news")); // false
-console.log(checkForSpam("JavaScript weekly newsletter")); // false
-console.log(checkForSpam("Get best sale offers now!")); // true
-console.log(checkForSpam("Amazing SalE, only tonight!")); // true
-console.log(checkForSpam("Trust me, this is not a spam message")); // true
-console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true
-console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
+console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
+console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
+console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
+console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
